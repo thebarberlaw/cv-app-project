@@ -9,16 +9,34 @@ import {
 } from "./sampleData.js";
 
 function App() {
-  
+
+  const [editMode, setEditMode] = useState(false);
   const [generalInfo, setGeneralInfo] = useState(sampleGeneralInfo);
   const [experience, setExperience] = useState(sampleExperience);
   const [education, setEducation] = useState(sampleEducation);
 
+  function handleSubmit() {
+    setEditMode(!editMode);
+    // setGeneralInfo()
+  }
+
+  function handleEdit() {
+    setEditMode(!editMode);
+  }
+
   return (
     <div>
-      <h1>Hello {generalInfo.firstName}</h1>
-     <CVdisplay />
-     <CVform />
+    {editMode ? (
+        <>
+          <CVform />
+          <button onClick={handleSubmit}>Submit</button>
+        </>
+      ) : (
+        <>
+          <CVdisplay generalInfo={generalInfo} />
+          <button onClick={handleEdit}>Edit</button>
+        </>
+      )}
     </div>
   );
 }
