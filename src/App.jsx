@@ -34,7 +34,9 @@ function App() {
         />
       ) : (
         <CVdisplay 
-        generalInfo={generalInfo} 
+        generalInfo={generalInfo}
+        experience={experience}
+        education={education} 
         toggleEditMode={toggleEditMode}
        />
       )}
