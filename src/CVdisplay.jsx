@@ -1,7 +1,16 @@
-export default function CVdisplay({generalInfo}) {
+export default function CVdisplay({generalInfo, toggleEditMode}) {
   return (
     <>
-      <h1>CVDisplay: Hello {generalInfo.firstName}</h1>
+      <h1>
+        {generalInfo.firstName} {generalInfo.lastName}
+      </h1>
+      <p>
+        <strong>{generalInfo.position}</strong>
+      </p>
+      <p>
+        {generalInfo.phone}&ensp;|&ensp;{generalInfo.email}
+      </p>
+      <button onClick={toggleEditMode}>Edit</button>
     </>
   );
 }

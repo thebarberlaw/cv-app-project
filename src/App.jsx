@@ -15,27 +15,28 @@ function App() {
   const [experience, setExperience] = useState(sampleExperience);
   const [education, setEducation] = useState(sampleEducation);
 
-  function handleSubmit() {
+  function toggleEditMode() {
     setEditMode(!editMode);
     // setGeneralInfo()
   }
 
-  function handleEdit() {
-    setEditMode(!editMode);
+  function handleSubmit(data) {
+    setGeneralInfo(data);
   }
 
   return (
     <div>
     {editMode ? (
-        <>
-          <CVform />
-          <button onClick={handleSubmit}>Submit</button>
-        </>
+        <CVform
+          initialData={generalInfo}
+          toggleEditMode={toggleEditMode}
+          onSubmit={handleSubmit}
+        />
       ) : (
-        <>
-          <CVdisplay generalInfo={generalInfo} />
-          <button onClick={handleEdit}>Edit</button>
-        </>
+        <CVdisplay 
+        generalInfo={generalInfo} 
+        toggleEditMode={toggleEditMode}
+       />
       )}
     </div>
   );
